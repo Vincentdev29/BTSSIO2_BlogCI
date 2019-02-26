@@ -23,17 +23,19 @@ class Connexion extends CI_Controller{
      $data = array(
        'titre' => 'Inscription'
      );
-     $this->load->view('/templates/view_basePage', $data);
-     $this->load->view('/templates/view_header',$data);
-     $this->load->view('/templates/view_endPage');
+     $this->load->view('templates/view_basePage', $data);
+     $this->load->view('templates/view_header',$data);
+     $this->load->view('templates/view_menuUnlogged');
+     $this->load->view('templates/view_endPage');
    }
 
    public function connexion(){
      $data = array(
        'titre' => 'Connexion'
      );
-     $this->load->view('/templates/view_basePage', $data);
-     $this->load->view('/templates/view_header',$data);
-     $this->load->view('/templates/view_endPage');
+     $this->load->view('templates/view_basePage', $data);
+     $this->load->view('templates/view_header',$data);
+     $this->load->view('templates/view_menuUnlogged');
+     $this->load->view('templates/view_endPage');
    }
 }
