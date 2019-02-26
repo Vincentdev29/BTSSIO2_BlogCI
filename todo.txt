@@ -1,0 +1,15 @@
+Ajout gestion utilisateur : Inscription - Connexion
+Modification bdd :
+	Ajout table  utilisateur
+	Ajout table grade
+	Ajout table de lien entre ticket et utilisateur
+
+Site Web
+	Création modèle pour gestion de connexion
+	Création contrôleur gestion de connexion
+	Création vue gestion de connexion
+		Inscription
+		Connexion
+		Deconnexion
+	Modification vue site
+		Création de ticket et de commentaires si 
