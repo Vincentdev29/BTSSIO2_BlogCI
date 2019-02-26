@@ -35,6 +35,7 @@ class Site extends CI_Controller {
 		//$this->load->view('view_listBillet', $data);
 		$this->load->view('templates/view_basePage', $data);
 		$this->load->view('templates/view_header', $data);
+		$this->load->view('templates/view_menuUnlogged', $data);
 		$this->load->view('view_listBillet', $data);
 		$this->load->view('templates/view_endPage');
 	}
@@ -52,6 +53,7 @@ class Site extends CI_Controller {
 		//Nouveau modèle avec templates
 		$this->load->view('templates/view_basePage', $data);
 		$this->load->view('templates/view_header', $data);
+		$this->load->view('templates/view_menuUnlogged', $data);
 		$this->load->view('view_billet', $data);
 		$this->load->view('templates/view_endPage');
   }
