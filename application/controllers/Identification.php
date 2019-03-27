@@ -26,6 +26,7 @@ class Identification extends CI_Controller{
      $this->load->view('templates/view_basePage', $data);
      $this->load->view('templates/view_header',$data);
      $this->load->view('templates/view_menuUnlogged');
+     $this->load->view('view_inscription');
      $this->load->view('templates/view_endPage');
    }
 
@@ -36,6 +37,21 @@ class Identification extends CI_Controller{
      $this->load->view('templates/view_basePage', $data);
      $this->load->view('templates/view_header',$data);
      $this->load->view('templates/view_menuUnlogged');
+     $this->load->view('view_connexion');
      $this->load->view('templates/view_endPage');
+   }
+
+
+   public function profilUtilisateurConnecte($pseudo){
+   }
+
+   public function seConnecter(){
+     // Si la connection est validé redirection sur la page d'accueil
+     redirect('/Site/lesBillets');
+   }
+
+   public function seDeconnecter(){
+     // Redirection après déconnection
+     redirect('/Site/lesBillets');
    }
 }
