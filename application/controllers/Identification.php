@@ -19,6 +19,19 @@ class Identification extends CI_Controller{
    * @see https://codeigniter.com/user_guide/general/urls.html
    */
 
+   public function index(){
+     // Chargement du/des modèles
+     redirect('/Site/');
+     /*
+     // Vérifie si l'utilisateur est connecte
+     if(!$this->authentificateur->estConnecte()){
+       $data = array();
+       // Redirection page prin
+       redirect('/Site/');
+     }else
+     */
+   }
+
    public function inscription(){
      $data = array(
        'titre' => 'Inscription'
@@ -31,8 +44,12 @@ class Identification extends CI_Controller{
    }
 
    public function connexion(){
+     $this->load->model('Authentificateur');
+
      $data = array(
-       'titre' => 'Connexion'
+       'titre' => 'Connexion',
+       'erreur' => 'Login ou mot de passe incorrect',
+       'connection' => $this->Authentificateur->estConnecte()
      );
      $this->load->view('templates/view_basePage', $data);
      $this->load->view('templates/view_header',$data);
@@ -41,13 +58,33 @@ class Identification extends CI_Controller{
      $this->load->view('templates/view_endPage');
    }
 
+   public function inscrireUtilisateur(){
 
-   public function profilUtilisateurConnecte($pseudo){
    }
 
+   public function profilUtilisateurConnecte($pseudo){
+
+   }
+
+   /**
+   * Traite le retour du formulaire de connexion afin de connecter l'utilisateur
+   * s'il est reconnu
+   */
    public function seConnecter(){
-     // Si la connection est validé redirection sur la page d'accueil
-     redirect('/Site/lesBillets');
+    $this->load->model('Authentificateur');
+
+     $pseudo = $this->input->post('pseudo');
+     $mdp = $this->input->post('motdepasse');
+
+     // Récupère les informations de l'utilisateur venant de la base. Si vide la variable est vide.
+     $credentialUser = $this->Authentificateur->authentifier($pseudo, $mdp);
+
+    if(empty($credentialUser)){
+      $this->connexion();
+    }else{
+      $this->authentif->connecter($authUser['id'], $authUser['nom'], $authUser['prenom']);
+      $this->index();
+    }
    }
 
    public function seDeconnecter(){

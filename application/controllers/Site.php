@@ -33,11 +33,21 @@ class Site extends CI_Controller {
 		);
 		//	On inclut une vue
 		//$this->load->view('view_listBillet', $data);
-		$this->load->view('templates/view_basePage', $data);
-		$this->load->view('templates/view_header', $data);
-		$this->load->view('templates/view_menuUnlogged', $data);
-		$this->load->view('view_listBillet', $data);
-		$this->load->view('templates/view_endPage');
+
+		// Inclusion des vues en fonction de l'etat de connexion.
+		if(!$this->authentificateur->estConnecte()){
+			$this->load->view('templates/view_basePage', $data);
+			$this->load->view('templates/view_header', $data);
+			$this->load->view('templates/view_menuUnlogged', $data);
+			$this->load->view('view_listBillet', $data);
+			$this->load->view('templates/view_endPage');
+		}else{
+			$this->load->view('templates/view_basePage', $data);
+			$this->load->view('templates/view_header', $data);
+			$this->load->view('templates/view_menuLogged', $data);
+			$this->load->view('view_listBillet');
+			$this->load->view('templates/view_endPage');
+		}
 	}
 
   public function leBillet($idBillet){
